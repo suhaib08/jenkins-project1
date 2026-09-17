@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/suhaib08/jenkins-project1.git'
+            }
+        }
+
+        stage('Parallel Checks') {
+            parallel {
+                stage('Frontend Check') {
+                    steps {
+                        dir('project3-parallel') {
+                            bat 'python frontend_check.py'
+                        }
+                    }
+                }
+                stage('Backend Check') {
+                    steps {
+                        dir('project3-parallel') {
+                            bat 'python backend_check.py'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Done') {
+            steps {
+                echo 'All checks completed.'
+            }
+        }
+    }
+}
