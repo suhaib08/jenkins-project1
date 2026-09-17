@@ -13,14 +13,14 @@ pipeline {
                 stage('Frontend Check') {
                     steps {
                         dir('project3-parallel') {
-                            bat 'python frontend_check.py'
+                            bat '"C:\\msys64\\ucrt64\\bin\\python.exe" frontend_check.py'
                         }
                     }
                 }
                 stage('Backend Check') {
                     steps {
                         dir('project3-parallel') {
-                            bat 'python backend_check.py'
+                            bat '"C:\\msys64\\ucrt64\\bin\\python.exe" backend_check.py'
                         }
                     }
                 }
