@@ -11,7 +11,7 @@ pipeline {
         stage('Generate Report') {
             steps {
                 dir('project2-archive') {
-                    bat 'python app.py'
+                       bat '"C:\\msys64\\ucrt64\\bin\\python.exe" app.py'
                 }
             }
         }
